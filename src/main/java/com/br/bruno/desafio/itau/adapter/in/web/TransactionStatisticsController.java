@@ -18,8 +18,8 @@ public class TransactionStatisticsController {
     }
     @GetMapping
     public ResponseEntity<DoubleSummaryStatistics> getStatistics() {
-        DoubleSummaryStatistics stats = transactionService.getStatistics();
-        return ResponseEntity.ok(stats);
+        DoubleSummaryStatistics statistics = transactionService.getStatistics();
+        return ResponseEntity.ok(statistics);
     }
 
 }
