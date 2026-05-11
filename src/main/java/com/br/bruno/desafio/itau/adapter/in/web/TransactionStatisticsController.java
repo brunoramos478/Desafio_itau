@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.DoubleSummaryStatistics;
-
 @RestController
 @RequestMapping("estatistica")
 @RequiredArgsConstructor
@@ -18,14 +16,7 @@ public class TransactionStatisticsController {
     private final TransactionService transactionService;
     @GetMapping
     public ResponseEntity<StatisticsResponseDto> getStatistics() {
-        DoubleSummaryStatistics statistics = transactionService.getStatistics();
-        StatisticsResponseDto response = StatisticsResponseDto.builder()
-                .sum(statistics.getSum())
-                .avg(statistics.getAverage())
-                .max(statistics.getMax())
-                .min(statistics.getMin())
-                .count(statistics.getCount())
-                .build();
+        StatisticsResponseDto response = transactionService.getStatistics();
         return ResponseEntity.ok(response);
     }
 
