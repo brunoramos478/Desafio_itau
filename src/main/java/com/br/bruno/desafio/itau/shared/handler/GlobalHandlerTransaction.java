@@ -66,5 +66,4 @@ public class GlobalHandlerTransaction extends ResponseEntityExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
 }

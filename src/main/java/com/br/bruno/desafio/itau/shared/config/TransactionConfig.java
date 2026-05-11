@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 @Configuration
 public class TransactionConfig {
 
-    @Bean
+    @Bean(name = "taskExecutor")
     public Executor threads() {
         return Executors.newVirtualThreadPerTaskExecutor();
     }
