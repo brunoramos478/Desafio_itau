@@ -26,8 +26,11 @@ public class TransactionService {
 
     public StatisticsResponseDto getStatistics() {
         OffsetDateTime now = OffsetDateTime.now();
+
+        OffsetDateTime timeLimit = now.minusSeconds(60);
+        transaction.removeIf(t -> t.dataHora().isBefore(timeLimit));
+
         DoubleSummaryStatistics stats = transaction.stream()
-                .filter(t -> t.dataHora().isAfter(now.minusSeconds(60)))
                 .mapToDouble(t -> t.valor().doubleValue())
                 .summaryStatistics();
 
